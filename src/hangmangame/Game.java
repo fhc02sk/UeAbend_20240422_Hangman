@@ -1,6 +1,7 @@
 package hangmangame;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Game {
     private char[] currentWord;
@@ -16,6 +17,7 @@ public class Game {
         DictionaryLoader dl = new DictionaryLoader();
         try {
             ArrayList<String> words = dl.load();
+            Collections.sort(words, new StringLengthComparator());
 
             // Sicherheitsabfrage und Reset für den Fall der Fälle
             if (counter >= words.size()){
